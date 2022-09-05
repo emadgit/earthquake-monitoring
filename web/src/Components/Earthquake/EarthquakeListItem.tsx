@@ -6,11 +6,11 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { ReviewStatus, Feature } from "../../types";
 
-interface EarthquakeListItem {
+interface EarthquakeListItemProps {
   earthquakeListItem: Feature;
 }
 
-export const EarthquakeListItem: FunctionComponent<EarthquakeListItem> = ({
+export const EarthquakeListItem: FunctionComponent<EarthquakeListItemProps> = ({
   earthquakeListItem,
 }) => {
   const navigate = useNavigate();
@@ -49,7 +49,9 @@ export const EarthquakeListItem: FunctionComponent<EarthquakeListItem> = ({
               </Card.Subtitle>
               <Card.Text>
                 Magnitude:{" "}
-                {`${earthquakeListItem.properties.mag} ${earthquakeListItem.properties.magType}`}
+                {`${Number(earthquakeListItem.properties.mag).toFixed(2)} ${
+                  earthquakeListItem.properties.magType
+                }`}
               </Card.Text>
               <Card.Subtitle style={{ position: "absolute", bottom: "55px" }}>
                 {formatDistance(new Date(), earthquakeListItem.properties.time)}{" "}
