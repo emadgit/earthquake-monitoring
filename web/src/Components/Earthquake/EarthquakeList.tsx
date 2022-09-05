@@ -10,7 +10,7 @@ import { LoaderType, ReviewStatus, Feature, EarthquakeData } from "../../types";
 import { EarthquakeListItem } from "./EarthquakeListItem";
 
 interface EarthquakeList {
-  earthquakeList: [Feature] | [];
+  earthquakeList: Array<Feature> | [];
 }
 
 const EarthquakeList: FunctionComponent<EarthquakeList> = ({
@@ -21,9 +21,9 @@ const EarthquakeList: FunctionComponent<EarthquakeList> = ({
       <>
         {earthquakeList.map((item) => {
           return (
-            <>
+            <React.Fragment key={item.id}>
               <EarthquakeListItem earthquakeListItem={item} />
-            </>
+            </React.Fragment>
           );
         })}
       </>

@@ -1,3 +1,11 @@
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      REACT_APP_GOOGLE_MAP_API_KEY: string;
+    }
+  }
+}
+
 enum LoaderType {
   ThreeDots = "ThreeDots",
   InfinitySpin = "InfinitySpin",
@@ -11,8 +19,8 @@ enum ReviewStatus {
 }
 
 export interface EarthquakeData {
-  bbox: [number];
-  features: [Feature];
+  bbox: Array<number>;
+  features: Array<Feature>;
   metadata: object;
   type: string;
 }
@@ -33,6 +41,43 @@ export interface Feature {
   };
   geometry: object;
   id: string;
+}
+
+export type EarthquakeDetailData = {
+  geometry: Geometry;
+  id: string;
+  type: string;
+  properties: EarthquakeDetailProperties;
+};
+
+interface EarthquakeDetailProperties {
+  magType: string;
+  mag: number;
+  code: string;
+  place: string;
+  status: string;
+  url: string;
+  products: ProductProperty;
+}
+
+interface ProductProperty {
+  "phase-data": Array<PhaseData>;
+}
+
+interface PhaseData {
+  properties: PhaseDataProperty;
+}
+
+interface PhaseDataProperty {
+  "azimuthal-gap": string;
+  depth: string;
+  "depth-type": string;
+  "magnitude-error": string;
+}
+
+interface Geometry {
+  coordinates: Array<number>;
+  type: string;
 }
 
 export { LoaderType, ReviewStatus };

@@ -9,8 +9,7 @@ import { API_URL } from "../../utils";
 import { EarthquakeList } from "../Earthquake";
 
 export const Home: FunctionComponent = () => {
-  const [earthquakeList, setEarthquakeList] = useState<[Feature] | []>([]);
-  const [earthquakeDetail, setEarthquakeDetail] = useState({});
+  const [earthquakeList, setEarthquakeList] = useState<Array<Feature> | []>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -19,7 +18,7 @@ export const Home: FunctionComponent = () => {
         setLoading(true);
         const { data } = await axios<EarthquakeData, EarthquakeData>(API_URL);
         if (!data || !data.features) {
-          setEarthquakeList([]);
+          return setEarthquakeList([]);
         }
 
         setEarthquakeList(data.features);

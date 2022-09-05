@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { useNavigate } from "react-router-dom";
 import { formatDistance } from "date-fns";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -12,6 +13,16 @@ interface EarthquakeListItem {
 export const EarthquakeListItem: FunctionComponent<EarthquakeListItem> = ({
   earthquakeListItem,
 }) => {
+  const navigate = useNavigate();
+  const handleNavigation = (id: string) => {
+    // For now just navigate to login
+    navigate(`/detail/${id}`, {
+      state: {
+        detailUrl: earthquakeListItem.properties.detail,
+        status: earthquakeListItem.properties.status,
+      },
+    });
+  };
   return (
     <>
       {earthquakeListItem.properties.status !== ReviewStatus.DELETED && (
@@ -45,6 +56,7 @@ export const EarthquakeListItem: FunctionComponent<EarthquakeListItem> = ({
                   bottom: "10px",
                   backgroundColor: "darkslategray",
                 }}
+                onClick={() => handleNavigation(earthquakeListItem.id)}
                 variant="dark"
               >
                 More details

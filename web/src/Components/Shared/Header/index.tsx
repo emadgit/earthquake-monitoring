@@ -11,7 +11,7 @@ export const Header: FunctionComponent<HeaderPorps> = ({ title }) => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">{title}</Navbar.Brand>
+          <Navbar.Brand href="/">{title}</Navbar.Brand>
         </Container>
       </Navbar>
     </>
