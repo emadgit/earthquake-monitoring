@@ -37,8 +37,8 @@ export const Loader: FunctionComponent<LoaderProps> = ({ type }) => {
               wrapperStyle={{
                 justifyContent: "center",
                 alignItems: "center",
-                minWidth: `${window.innerWidth - 120}px`,
-                minHeight: `${window.innerHeight - 120}px`,
+                minWidth: `${window.innerWidth / 120}px`,
+                minHeight: `${window.innerHeight / 120}px`,
               }}
               visible={true}
             />
