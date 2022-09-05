@@ -41,7 +41,7 @@ export const EarthquakeDetails: FunctionComponent = () => {
       }
     };
     handleFetch();
-  }, []);
+  }, [state.detailUrl]);
 
   return (
     <>
