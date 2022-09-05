@@ -32,7 +32,12 @@ export const EarthquakeListItem: FunctionComponent<EarthquakeListItem> = ({
         >
           <Card
             className="card text-bg-dark mb-3"
-            style={{ width: "18rem", height: "15rem" }}
+            style={{
+              width: "18rem",
+              height: "15rem",
+              boxShadow:
+                "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);",
+            }}
           >
             <Card.Body>
               <Card.Title>{earthquakeListItem.properties.title}</Card.Title>
